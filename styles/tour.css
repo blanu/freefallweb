@@ -1,0 +1,116 @@
+#takeTour
+{
+  clear: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+#footnote
+{
+  clear: left;
+  margin-left: 90px;
+  margin-bottom: 2em;
+}
+
+#bd
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+h1
+{
+  text-align: left;
+}
+
+h4
+{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+h4 a
+{
+  color: black;
+}
+
+p
+{
+  margin-bottom: 1em;
+}
+
+.sampleImage
+{
+  width: 350px;
+  background: #FFFFFF none repeat scroll 0 0;
+  border: 10px solid #F7F7F7;
+  padding: 2px;
+}
+
+.smallSampleImage
+{
+  width: 200px;
+  background: #FFFFFF none repeat scroll 0 0;
+  border: 10px solid #F7F7F7;
+  padding: 2px;
+}
+
+.tourSteps
+{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.tourSteps li
+{
+  display: inline
+}
+
+.selected
+{
+  font-weight: bold;
+}
+
+.tourText
+{
+  float:left;
+  margin:10px 0 35px 90px;
+  width:590px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.overview
+{
+}
+
+.overview > div
+{
+//  display: inline;
+//  float: left;
+}
+
+.columnA
+{
+  width: 255px;
+  margin-right: 35px;
+  float: left;
+}
+
+.columnB
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reasons li
+{
+  list-style-type: disc;
+  list-style-position: inside;
+}

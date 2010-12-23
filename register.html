@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ringlight | Register</title>
+<link rel="stylesheet" type="text/css" href="/static/yui/reset-fonts-grids.css"/>
+<link href="/static/newstyle.css" rel="stylesheet" type="text/css" />
+<link href="/static/front.css" rel="stylesheet" type="text/css" />
+<link href="/static/newlogin.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="loginPage">
+  <div id="doc" class="yui-t1">
+    <div id="hd">
+      <img class="mediumLogo" src="/static/images/logo.gif" alt="Ringlight logo"/>
+<!--
+<div class="ringlight">Ringlight</div>
+<div class="tagline" id="tagline">
+It'd be a lot cooler if you did.
+</div>
+-->
+<div id="topmenuWrapper">
+<div class="floatmenu">
+<ul>
+  <li><a href="/present/Plans">Plans and Pricing</a></li>
+  <li>|</li>
+  <li><a href="/present/About">Learn more</a></li>
+  <li>|</li>
+  <li><a href="/feedback/Feedback">Leave Feedback</a></li>
+</ul>
+</div>
+</div>
+    </div>
+    <div id="bd">
+      <div class="columns">
+        <div class="nav">
+          &nbsp;
+        </div>
+        <div class="main">
+          <div class="rounded registerForm" align="center">
+  <form method="POST" action="/login/Register">
+    <fieldset>
+      <legend>Sign up</legend>
+            <p>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+      </p>
+      <p>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="">
+      </p>
+      <p>
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" value="">
+        <span class="helpButton">
+          Learn more?
+        </span>
+
+        <span class="helpText popoutForm">
+          Providing your e-mail address is optional.<br/>
+          It is necessary to recover your password if you forget it.<br/>
+          Your e-mail will only be used to contact about information regarding your use of this website.<br/>
+          This e-mail will never be shared with any third parties.<br/>
+          More details on such matters are in the <a href="/present/Privacy" target="_blank">privacy policy</a>.<br/>
+        </span>
+      </p>      
+      <input type="hidden" name="machine" value="browser"/>
+      <input type="hidden" name="register" value="true"/>
+      <input class="submit" type="image" src="/static/images/register.gif" width="100" height="20" value="Submit" alt="Submit"/>
+    </fieldset>
+  </form>
+</div>
+          <br/>
+        </div>
+        <div id="ads">
+          &nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="ft">
+  <ul>
+    <li>&copy; 2007-2008 Brandon Wiley</li>
+    <li><a href="/present/About">Learn more</a></li>
+    <li><a href="http://blog.ringlight.us/" target="_blank">Blog</a></li>
+    <li><a href="/present/AboutUs">About us</a></li>
+    <li><a href="/present/Tour">Tour</a></li>
+    <li><a href="/present/Contact">Contact</a></li>
+    <li><a href="/present/Privacy">Privacy</a></li>
+    <li><a href="/present/TermsOfService">Terms</a></li>
+    <li><a href="/stats/SiteStats">Stats</a></li>
+  </ul>
+</div>
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1292222-1");
+pageTracker._trackPageview();
+</script>
+  <script type="text/javascript" src="/static/jquery-min.js"></script>
+  <script type="text/javascript" src="/static/corner-round-min.js"></script>
+  <script type="text/javascript" src="/static/help.js"></script>
+</body>
+</html>
