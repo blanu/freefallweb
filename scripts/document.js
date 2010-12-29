@@ -44,6 +44,7 @@ function saveDoc()
 
 function initBespin()
 {
+  log("initBespin");
   doc.setDocCallback(gotDoc);
   doc.get();
 }
@@ -52,14 +53,11 @@ function initDocument()
 {
   log('initDocument: '+dbid+' '+docid);
   $("#tabs").tabs();
-  log('initDocument: '+dbid+' '+docid);
 
   db=freefall.Database('', dbid);
   doc=db.get(docid);
 
   $('#saveDoc').click(saveDoc);
-  log('button: ');
-  log($('#saveDoc'));
 
 //  $('input[name="type"]').change(changeType);
 
