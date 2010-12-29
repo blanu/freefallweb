@@ -37,8 +37,8 @@ function addDbDialog()
 
 function initDatabase()
 {
-  log('listening docs-'+userid+'-'+dbid);
-  Web2Peer.listen('docs-'+userid+'-'+dbid, gotDocs);
+  log('listening '+dbid);
+  Web2Peer.listen(dbid, gotDocs);
 
   $("#addDbButton").click(addDbDialog);
 
