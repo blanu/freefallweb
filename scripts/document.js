@@ -54,7 +54,7 @@ function initDocument()
   log('initDocument: '+dbid+' '+docid);
   $("#tabs").tabs();
 
-  db=freefall.Database('', dbid);
+  db=freefall.Database('http://freefall.blanu.net/', dbid);
   doc=db.get(docid);
 
   $('#saveDoc').click(saveDoc);
