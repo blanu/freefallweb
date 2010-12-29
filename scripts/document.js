@@ -5,12 +5,12 @@ function gotDoc(doc, data)
 {
   log('got doc');
   log(data);
-  
+
 //  $('#doc').val(JSON.stringify(data));
   $('#doc').each(function() {
 		this.bespin.editor.value=JSON.stringify(data);
 	});
-  
+
   fullDoc=data;
 
 //  renderEditor();
@@ -45,7 +45,7 @@ function saveDoc()
 function initBespin()
 {
   doc.setDocCallback(gotDoc);
-  doc.get();	
+  doc.get();
 }
 
 function initDocument()
@@ -57,8 +57,8 @@ function initDocument()
   db=freefall.Database('', dbid);
   doc=db.get(docid);
 
-  log('listening doc-'+userid+'-'+dbid+'-'+docid);
-  Web2Peer.listen('doc-'+userid+'-'+dbid+'-'+docid, gotDoc);
+  log('listening '+dbid+'-'+docid);
+  Web2Peer.listen(dbid+'-'+docid, gotDoc);
 
   $('#saveDoc').click(saveDoc);
   log('button: ');
