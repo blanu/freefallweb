@@ -57,9 +57,6 @@ function initDocument()
   db=freefall.Database('', dbid);
   doc=db.get(docid);
 
-  log('listening '+dbid+'-'+docid);
-  Web2Peer.listen(dbid+'-'+docid, gotDoc);
-
   $('#saveDoc').click(saveDoc);
   log('button: ');
   log($('#saveDoc'));
