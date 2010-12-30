@@ -6,10 +6,10 @@ function gotDoc(doc, data)
   log('got doc');
   log(data);
 
-//  $('#doc').val(JSON.stringify(data));
-  $('#doc').each(function() {
-		this.bespin.editor.value=JSON.stringify(data);
-	});
+  $('#doc').val(JSON.stringify(data));
+//  $('#doc').each(function() {
+//		this.bespin.editor.value=JSON.stringify(data);
+//	});
 
   fullDoc=data;
 
@@ -23,11 +23,11 @@ function gotDoc(doc, data)
 function saveDoc()
 {
   log('saving parsed doc')
-//  var value=$('#doc').val();
-  var value=null;
-  $('#doc').each(function() {
-		value=this.bespin.editor.value;
-	});
+  var value=$('#doc').val();
+//  var value=null;
+//  $('#doc').each(function() {
+//		value=this.bespin.editor.value;
+//	});
   log(value);
 
   if(jsonlint.parse(value))
@@ -61,7 +61,7 @@ function initDocument()
 
 //  $('input[name="type"]').change(changeType);
 
-  window.onBespinLoad=initBespin;
+//  window.onBespinLoad=initBespin;
 }
 
 $(document).ready(initDocument);
