@@ -62,6 +62,9 @@ function initDocument()
 //  $('input[name="type"]').change(changeType);
 
 //  window.onBespinLoad=initBespin;
+
+  doc.setDocCallback(gotDoc);
+  doc.get();
 }
 
 $(document).ready(initDocument);
