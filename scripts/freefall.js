@@ -5,7 +5,6 @@ ajax=function(method, url, data, callback)
 
   if(callback!=null)
   {
-    var handler=new Handler(callback);
     req.onreadystatechange=function() {
       if(req.readyState==4)
       {
