@@ -2,7 +2,6 @@ ajax=function(method, url, data, callback)
 {
   var req=new XMLHttpRequest();
   req.open(method, url, true);
-  postMessage('req.open '+method+' '+url);
 
   if(callback!=null)
   {
@@ -10,7 +9,6 @@ ajax=function(method, url, data, callback)
       if(req.readyState==4)
       {
         var data=JSON.parse(req.responseText);
-        postMessage('got data: '+req.responseText);
         callback(data);
       }
     };
