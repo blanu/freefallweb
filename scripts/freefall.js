@@ -1,34 +1,24 @@
-function _ajax_request(url, data, callback, type, method) {
-    if (jQuery.isFunction(data)) {
-        callback = data;
-        data = {};
-    }
-    return jQuery.ajax({
-        type: method,
-        url: url,
-        data: data,
-        success: callback,
-        dataType: type
-        });
+ajax=function(method, url, data, callback)
+{
+  var req=new XMLHttpRequest();
+  req.open(method, url, true);
+
+  if(callback!=null)
+  {
+    var handler=new Handler(callback);
+    req.onreadystatechange=function() {
+      if(req.readyState==4)
+      {
+        var data=JSON.parse(req.responseText);
+        callback(data);
+      }
+    };
+  }
+
+  req.send(data);
 }
 
-jQuery.extend({
-    put: function(url, data, callback, type) {
-        return _ajax_request(url, data, callback, type, 'PUT');
-    },
-    delete_: function(url, data, callback, type) {
-        return _ajax_request(url, data, callback, type, 'DELETE');
-    }
-});
-
 freefall={};
-
-$(function() {
-  getFreefall = function()
-  {
-    return freefall;
-  };
-});
 
 freefall.Document=function(db, did)
 {
@@ -38,7 +28,7 @@ freefall.Document=function(db, did)
   this.fullDoc=null;
 
   this.docCallback=null;
-  
+
   doc=this;
 
   this.internalDocCallback=function(data) {
@@ -49,7 +39,7 @@ freefall.Document=function(db, did)
 			doc.docCallback(doc, data);
 		}
   }
-  
+
   Web2Peer.listen(this.db.dbid+'-'+this.docid, this.internalDocCallback);
 
   this.setDocCallback=function(f)
@@ -61,7 +51,7 @@ freefall.Document=function(db, did)
   {
     log('get doc');
     var url=this.base+'/db/'+this.db.dbid+'/'+this.docid;
-    $.getJSON(url, this.internalDocCallback);
+    ajax('GET', url, null, this.internalDocCallback);
   }
 
   this.setName=function(name)
@@ -79,12 +69,12 @@ freefall.Document=function(db, did)
     if(this.docid===null || this.docid===undefined)
     {
       var url=this.base+"/db/"+this.db.dbid;
-      $.post(url, JSON.stringify(doc), this.setName);
+      ajax('POST', url, JSON.stringify(doc), this.setName);
 		}
 		else
 		{
       var url=this.base+"/db/"+this.db.dbid+'/'+this.docid;
-      $.post(url, JSON.stringify(doc));
+      ajax('POST', url, JSON.stringify(doc), null);
 		}
   }
 
@@ -108,14 +98,14 @@ freefall.Database=function(base, id)
   {
     log('get docs');
     var url=this.base+'/db/'+this.dbid;
-    $.getJSON(url, this.docsCallback);
+    ajax('GET', url, null, this.docsCallback);
   }
 
   this.addDoc=function(docname)
   {
     log('dbname: '+docname);
     var url=this.base+"/db/"+this.dbid+'/'+docname;
-    $.post(url, JSON.stringify(null));
+    ajax('POST', url, JSON.stringify(null), null);
   }
 
   this.get=function(docname)
@@ -125,61 +115,3 @@ freefall.Database=function(base, id)
 
   return this;
 }
-
-freefall.submitForm=function()
-{
-	log('submitForm');
-	log(this);
-
-  var host=$(this).attr('host');
-  var base='http://'+host;
-	var dbname=$(this).attr('db');
-	var db=freefall.Database(base, dbname);
-	var docname=$(this).attr('doc');
-	var doc=db.get(docname);
-	
-	var data={};
-	$(this).find("input").each(function(index) {
-		try
-		{
-  	  var key=$(this).attr('name');
-	    var value=$(this).val();
-	  
-  	  data[key]=value;
-		}
-		catch(e)
-		{
-			log('Exception:');
-			log(e);
-		}
-  });
-	$(this).find("textarea").each(function(index) {
-		try
-		{
-  	  var key=$(this).attr('name');
-	    var value=$(this).val();
-	  
-  	  data[key]=value;
-		}
-		catch(e)
-		{
-			log('Exception:');
-			log(e);
-		}
-  });
-	
-	doc.save(data);
-	
-	return false;
-}
-
-function initFreefall()
-{
-  Web2Peer.init("freefall");
-  
-  log('Installing magic forms...');
-  log($('.freefall-form'));  
-  $('.freefall-form').submit(freefall.submitForm);
-}
-
-$(document).ready(initFreefall);
