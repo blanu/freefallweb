@@ -21,7 +21,7 @@ freefall={};
 
 freefall.Document=function(db, did)
 {
-  log('new Document '+db.dbid+' '+did);
+//  log('new Document '+db.dbid+' '+did);
   this.db=db;
   this.docid=did;
   this.fullDoc=null;
@@ -31,8 +31,8 @@ freefall.Document=function(db, did)
   doc=this;
 
   this.internalDocCallback=function(data) {
-		log('doc changed '+doc.docid);
-		log(data);
+//		log('doc changed '+doc.docid);
+//		log(data);
 		if(doc.docCallback)
 		{
 			doc.docCallback(doc, data);
@@ -48,7 +48,7 @@ freefall.Document=function(db, did)
 
   this.get=function()
   {
-    log('get doc');
+//    log('get doc');
     var url=this.base+'/db/'+this.db.dbid+'/'+this.docid;
     ajax('GET', url, null, this.internalDocCallback);
   }
@@ -60,8 +60,8 @@ freefall.Document=function(db, did)
 
   this.save=function(doc)
   {
-		log('saving...');
-    log(doc);
+//		log('saving...');
+//    log(doc);
 
     this.fullDoc=doc;
 
@@ -82,7 +82,7 @@ freefall.Document=function(db, did)
 
 freefall.Database=function(base, id)
 {
-  log('new Database '+base+' '+id);
+//  log('new Database '+base+' '+id);
   this.base=base;
   this.dbid=id;
 
@@ -95,14 +95,14 @@ freefall.Database=function(base, id)
 
   this.getDocs=function()
   {
-    log('get docs');
+//    log('get docs');
     var url=this.base+'/db/'+this.dbid;
     ajax('GET', url, null, this.docsCallback);
   }
 
   this.addDoc=function(docname)
   {
-    log('dbname: '+docname);
+//    log('dbname: '+docname);
     var url=this.base+"/db/"+this.dbid+'/'+docname;
     ajax('POST', url, JSON.stringify(null), null);
   }
