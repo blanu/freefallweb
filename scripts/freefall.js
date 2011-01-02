@@ -25,6 +25,7 @@ freefall.Document=function(db, did)
   this.db=db;
   this.docid=did;
   this.fullDoc=null;
+  this.update=db.update;
 
   this.docCallback=null;
 
@@ -39,7 +40,10 @@ freefall.Document=function(db, did)
 		}
   }
 
-  Web2Peer.listen(this.db.dbid+'-'+this.docid, this.internalDocCallback);
+  if(update)
+  {
+    Web2Peer.listen(this.db.dbid+'-'+this.docid, this.internalDocCallback);
+  }
 
   this.setDocCallback=function(f)
   {
@@ -80,11 +84,16 @@ freefall.Document=function(db, did)
   return this;
 }
 
-freefall.Database=function(base, id)
+freefall.Database=function(base, id, update)
 {
 //  log('new Database '+base+' '+id);
   this.base=base;
   this.dbid=id;
+  this.update=update;
+  if(this.update==null)
+  {
+    this.update=false;
+  }
 
   this.docsCallback=null;
 
