@@ -40,7 +40,7 @@ freefall.Document=function(db, did)
 		}
   }
 
-  if(update)
+  if(this.update)
   {
     Web2Peer.listen(this.db.dbid+'-'+this.docid, this.internalDocCallback);
   }
