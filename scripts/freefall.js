@@ -84,6 +84,52 @@ freefall.Document=function(db, did)
   return this;
 }
 
+freefall.View=function(db, vid, key)
+{
+  this.db=db;
+  this.viewid=vid;
+  this.key=key;
+  this.update=db.update;
+
+  this.viewCallback=null;
+
+  view=this;
+
+  this.internalDocCallback=function(data) {
+		if(view.viewCallback)
+		{
+			view.viewCallback(view, data);
+		}
+  }
+
+  if(this.update)
+  {
+    Web2Peer.listen(this.db.dbid+'-'+this.viewid, this.internalDocCallback);
+  }
+
+  this.setViewCallback=function(f)
+  {
+    this.viewCallback=f;
+  }
+
+  this.get=function()
+  {
+    var url=this.base+'/db/'+this.db.dbid+'/views/'+this.viewid;
+    if(this.key!=null)
+    {
+      url=url+'?key='+this.key;
+    }
+    ajax('GET', url, null, this.internalDocCallback);
+  }
+
+  this.setName=function(name)
+  {
+		this.viewid=name;
+	}
+
+  return this;
+}
+
 freefall.Database=function(base, id, update)
 {
 //  log('new Database '+base+' '+id);
@@ -119,6 +165,11 @@ freefall.Database=function(base, id, update)
   this.get=function(docname)
   {
     return freefall.Document(this, docname);
+  }
+
+  this.getView=function(viewname, key)
+  {
+    return freefall.View(this, viewname, key);
   }
 
   return this;
