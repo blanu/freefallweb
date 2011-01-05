@@ -88,7 +88,7 @@ freefall.View=function(db, vid, key)
 {
   this.db=db;
   this.viewid=vid;
-  this.key=key;
+  this.key=JSON.stringify(key);
   this.update=db.update;
 
   this.viewCallback=null;
