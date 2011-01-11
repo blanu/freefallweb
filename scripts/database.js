@@ -12,12 +12,13 @@ function gotDocs(docs)
       $('#docs').append('<li><a class="doclink" href="/dashboard/'+dbid+'/'+docs[x]+'">'+docs[x]+'</a><button docid="'+docs[x]+'" class="deleteButton">Delete</button></li>');
     }
 
-    $("#deleteButton").click(deleteDoc);
+    $(".deleteButton").click(deleteDoc);
   }
 }
 
 function deleteDoc()
 {
+  log('deleting');
   var docid=$(this).attr('docid');
   var doc=db.get(docid);
   doc.delete();
