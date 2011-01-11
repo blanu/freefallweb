@@ -81,6 +81,14 @@ freefall.Document=function(db, did)
 		}
   }
 
+  this.delete=function()
+  {
+		log('deleting...');
+
+    var url=this.base+"/db/"+this.db.dbid+'/'+this.docid+'/delete';
+    ajax('POST', url, null, null);
+  }
+
   return this;
 }
 

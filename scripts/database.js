@@ -9,9 +9,16 @@ function gotDocs(docs)
   {
     for(var x=0; x<docs.length; x++)
     {
-      $('#docs').append('<li><a class="doclink" href="/dashboard/'+dbid+'/'+docs[x]+'">'+docs[x]+'</a></li>');
+      $('#docs').append('<li><a class="doclink" href="/dashboard/'+dbid+'/'+docs[x]+'">'+docs[x]+'</a><button docid="'+docs[x]+'" class="deleteButton">Delete</button></li>');
     }
   }
+}
+
+function deleteDoc()
+{
+  var docid=$(this).attr('docid');
+  var doc=db.get(docid);
+  doc.delete();
 }
 
 function addDbDialog()
@@ -41,6 +48,7 @@ function initDatabase()
   Web2Peer.listen(dbid, gotDocs);
 
   $("#addDbButton").click(addDbDialog);
+  $("#deleteButton").click(deleteDoc);
 
   db.setDocsCallback(gotDocs);
   db.getDocs();
