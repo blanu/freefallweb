@@ -11,6 +11,8 @@ function gotDocs(docs)
     {
       $('#docs').append('<li><a class="doclink" href="/dashboard/'+dbid+'/'+docs[x]+'">'+docs[x]+'</a><button docid="'+docs[x]+'" class="deleteButton">Delete</button></li>');
     }
+
+    $("#deleteButton").click(deleteDoc);
   }
 }
 
@@ -48,7 +50,6 @@ function initDatabase()
   Web2Peer.listen(dbid, gotDocs);
 
   $("#addDbButton").click(addDbDialog);
-  $("#deleteButton").click(deleteDoc);
 
   db.setDocsCallback(gotDocs);
   db.getDocs();
