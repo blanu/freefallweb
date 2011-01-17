@@ -161,6 +161,10 @@ freefall.Database=function(base, id, update)
 
   this.setAuthenticateCallbacks=function(scb, fcb)
   {
+    log('setAuthenticateCallbacks');
+    log(scb);
+    log(fcb);
+
     this.authSuccessCallback=scb;
     this.authFailureCallback=fcb;
   }
