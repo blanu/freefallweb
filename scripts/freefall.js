@@ -150,6 +150,7 @@ freefall.Database=function(base, id, update)
   {
     this.update=false;
   }
+  this.sessionid=null;
 
   this.docsCallback=null;
 
@@ -185,7 +186,8 @@ freefall.Database=function(base, id, update)
     {
       if(self.authSuccessCallback)
       {
-        self.authSuccessCallback(data['sessionid']);
+        self.sessionid=data['sessionid'];
+        self.authSuccessCallback();
       }
     }
     else
