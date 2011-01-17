@@ -200,6 +200,7 @@ freefall.Database=function(base, id, update)
 
   this.authenticate=function()
   {
+    $('body').append('<iframe src="'+this.base+'/session/check"/>');
     var url=this.base+'/authenticate';
     ajax('POST', url, JSON.stringify({'failureUrl': this.authFailureUrl}), this.internalAuthCallback);
   }
