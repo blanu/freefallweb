@@ -196,10 +196,10 @@ freefall.Database=function(base, id, update)
     }
   }
 
-  this.authenticate=function(successCallback, failureUrl)
+  this.authenticate=function()
   {
     var url=this.base+'/authenticate';
-    ajax('GET', url, null, this.internalAuthCallback);
+    ajax('GET', url, {'failureUrl': this.authFailureUrl}, this.internalAuthCallback);
   }
 
   this.getDocs=function()
