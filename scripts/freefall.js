@@ -192,8 +192,8 @@ freefall.Database=function(base, id, update)
       if(self.authFailureUrl)
       {
         log('failure');
-        log(self.authFailureUrl);
-//        window.location=self.authFailureUrl;
+        log(data['url']);
+        window.location=data['url'];
       }
     }
   }
