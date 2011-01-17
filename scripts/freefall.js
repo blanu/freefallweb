@@ -141,6 +141,8 @@ freefall.View=function(db, vid, key)
 freefall.Database=function(base, id, update)
 {
 //  log('new Database '+base+' '+id);
+  self=this;
+
   this.base=base;
   this.dbid=id;
   this.update=update;
@@ -174,21 +176,21 @@ freefall.Database=function(base, id, update)
     log('internalAuthCallback');
     log(data);
     log(data==null);
-    log(this.authSuccessCallback);
-    log(this.authFailureCallback);
+    log(self.authSuccessCallback);
+    log(self.authFailureCallback);
 
     if(data==null)
     {
-      if(this.authFailureCallback)
+      if(self.authFailureCallback)
       {
-        this.authFailureCallback();
+        self.authFailureCallback();
       }
     }
     else
     {
-      if(this.authSuccessCallback)
+      if(self.authSuccessCallback)
       {
-        this.authSuccessCallback(data);
+        self.authSuccessCallback(data);
       }
     }
   }
