@@ -201,7 +201,7 @@ freefall.Database=function(base, id, update)
   this.authenticate=function()
   {
     var url=this.base+'/authenticate';
-    ajax('GET', url, {'failureUrl': this.authFailureUrl}, this.internalAuthCallback);
+    ajax('POST', url, JSON.stringify({'failureUrl': this.authFailureUrl}), this.internalAuthCallback);
   }
 
   this.getDocs=function()
