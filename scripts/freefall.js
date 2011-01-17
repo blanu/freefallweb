@@ -169,6 +169,9 @@ freefall.Database=function(base, id, update)
   {
     log('internalAuthCallback');
     log(data);
+    log(data==null);
+    log(this.authSuccessCallback);
+    log(this.authFailureCallback);
 
     if(data==null)
     {
