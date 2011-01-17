@@ -208,7 +208,7 @@ freefall.Database=function(base, id, update)
     log('authenticate:');
     log(this.internalAuthCallback);
     window.addEventListener('message', this.internalAuthCallback);
-    $('body').append('<iframe id="freefall-authcheck" src="'+this.base+'/session/check"/>');
+    $('body').append('<iframe id="freefall-authcheck" style="display: none" src="'+this.base+'/session/check"/>');
   }
 
   this.getDocs=function()
