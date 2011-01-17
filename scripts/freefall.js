@@ -159,43 +159,44 @@ freefall.Database=function(base, id, update)
   }
 
   this.authSuccessCallback=null;
-  this.authFailureCallback=null;
+  this.authFailureUrl=null;
 
-  this.setAuthenticateCallbacks=function(scb, fcb)
+  this.setAuthenticateCallbacks=function(scb, furl)
   {
     log('setAuthenticateCallbacks');
     log(scb);
-    log(fcb);
+    log(furl);
 
     this.authSuccessCallback=scb;
-    this.authFailureCallback=fcb;
+    this.authFailureUrl=furl;
   }
 
   this.internalAuthCallback=function(data)
   {
     log('internalAuthCallback');
     log(data);
-    log(data==null);
     log(self.authSuccessCallback);
     log(self.authFailureCallback);
 
-    if(data==null)
+    var success=data['success']
+
+    if(success)
     {
-      if(self.authFailureCallback)
+      if(self.authSuccessCallback)
       {
-        self.authFailureCallback();
+        self.authSuccessCallback(data['email']);
       }
     }
     else
     {
-      if(self.authSuccessCallback)
+      if(self.authFailureUrl)
       {
-        self.authSuccessCallback(data);
+        window.location=self.authFailureUrl;
       }
     }
   }
 
-  this.authenticate=function(successCallback, failureCallback)
+  this.authenticate=function(successCallback, failureUrl)
   {
     var url=this.base+'/authenticate';
     ajax('GET', url, null, this.internalAuthCallback);
