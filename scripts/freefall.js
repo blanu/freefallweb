@@ -171,13 +171,14 @@ freefall.Database=function(base, id, update)
     this.authFailureUrl=furl;
   }
 
-  this.internalAuthCallback=function(data)
+  this.internalAuthCallback=function(e)
   {
     log('internalAuthCallback');
-    log(data);
+    log(e);
     log(self.authSuccessCallback);
     log(self.authFailureCallback);
 
+    var data=e.data;
     var success=data['success']
 
     if(success)
@@ -193,16 +194,15 @@ freefall.Database=function(base, id, update)
       {
         log('failure');
         log(data['url']);
-        window.location=data['url'];
+//        window.location=data['url'];
       }
     }
   }
 
   this.authenticate=function()
   {
+    window.addEventListener('message', this.internalAuthCallback);
     $('body').append('<iframe src="'+this.base+'/session/check"/>');
-    var url=this.base+'/authenticate';
-    ajax('POST', url, JSON.stringify({'failureUrl': this.authFailureUrl}), this.internalAuthCallback);
   }
 
   this.getDocs=function()
