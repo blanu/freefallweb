@@ -156,6 +156,42 @@ freefall.Database=function(base, id, update)
     this.docsCallback=f;
   }
 
+  this.authSuccessCallback=null;
+  this.authFailureCallback=null;
+
+  this.setAuthenticateCallbacks(scb, fcb)
+  {
+    this.authSuccessCallback=scb;
+    this.authFailureCallback=fcb;
+  }
+
+  this.internalAuthCallback=function(data)
+  {
+    log('internalAuthCallback');
+    log(data);
+
+    if(data==null)
+    {
+      if(this.authFailureCallback)
+      {
+        this.authFailureCallback();
+      }
+    }
+    else
+    {
+      if(this.authSuccessCallback)
+      {
+        this.authSuccessCallback(data);
+      }
+    }
+  }
+
+  this.authenticate=function(successCallback, failureCallback)
+  {
+    var url=this.base+'/authenticate';
+    ajax('GET', url, null, this.internalAuthCallback);
+  }
+
   this.getDocs=function()
   {
 //    log('get docs');
