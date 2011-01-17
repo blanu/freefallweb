@@ -197,12 +197,16 @@ freefall.Database=function(base, id, update)
 //        window.location=data['url'];
       }
     }
+
+    $('#freefall-authcheck').remove();
   }
 
   this.authenticate=function()
   {
+    log('authenticate:');
+    log(this.internalAuthCallback);
     window.addEventListener('message', this.internalAuthCallback);
-    $('body').append('<iframe src="'+this.base+'/session/check"/>');
+    $('body').append('<iframe id="freefall-authcheck" src="'+this.base+'/session/check"/>');
   }
 
   this.getDocs=function()
