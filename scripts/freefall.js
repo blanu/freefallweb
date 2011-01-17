@@ -185,7 +185,7 @@ freefall.Database=function(base, id, update)
     {
       if(self.authSuccessCallback)
       {
-        self.authSuccessCallback(data['email']);
+        self.authSuccessCallback(data['sessionid']);
       }
     }
     else
