@@ -1,5 +1,6 @@
 var db=null;
 var doc=null;
+var editor=null;
 
 function gotDoc(doc, data)
 {
@@ -23,6 +24,7 @@ function gotDoc(doc, data)
 function saveDoc()
 {
   log('saving parsed doc')
+  editor.save();
   var value=$('#doc').val();
 //  var value=null;
 //  $('#doc').each(function() {
@@ -57,14 +59,18 @@ function initDocument()
   db=freefall.Database('http://freefall.blanu.net/', dbid);
   doc=db.get(docid);
 
+  editor=new CodeMirror.fromTextArea('doc', {
+    parserfile: ['tokenizejavascript.js', 'parsejavascript.js'],
+    path: 'lib/codemirror',
+    stylesheet: 'styles/codemirror/jscolors.css'
+  });
+
   $('#saveDoc').click(saveDoc);
-
-//  $('input[name="type"]').change(changeType);
-
-//  window.onBespinLoad=initBespin;
 
   doc.setDocCallback(gotDoc);
   doc.get();
+
+//  $('input[name="type"]').change(changeType);
 }
 
 $(document).ready(initDocument);
