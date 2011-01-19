@@ -46,3 +46,15 @@ h3 {font-size:18px; margin:0; font-weight:bold;}
 .field {background-image:url(/images/bg-registerfield.png); width:171px; height:26px; margin-bottom:5px; border:0;}
 .loginfield {background-image:url(/images/bg-loginfield.png); width:171px; height:26px; margin-bottom:5px; border:0;}
 .height-large {margin-top:10px;}
+
+.CodeMirror-line-numbers {
+  width: 2.2em;
+  color: #aaa;
+  background-color: #eee;
+  text-align: right;
+  padding-right: .3em;
+  font-size: 10pt;
+  font-family: monospace;
+  padding-top: .4em;
+  line-height: normal;
+}
