@@ -18,7 +18,7 @@ function gotDoc(doc, data)
 
   editor=new CodeMirror.fromTextArea('doc', {
     parserfile: ['tokenizejavascript.js', 'parsejavascript.js'],
-    path: 'http://beta.freefall.com/lib/codemirror/',
+    path: 'http://beta.freefalldb.com/lib/codemirror/',
     stylesheet: 'styles/codemirror/jscolors.css'
   });
 }
