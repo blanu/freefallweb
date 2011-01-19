@@ -7,10 +7,16 @@ function gotDoc(doc, data)
   log('got doc');
   log(data);
 
-  $('#doc').val(JSON.stringify(data));
-//  $('#doc').each(function() {
-//		this.bespin.editor.value=JSON.stringify(data);
-//	});
+  if(jsonlint.parse(data))
+  {
+    data=JSON.parse(data);
+  }
+  else
+  {
+    log('Invalid json: '+value);
+  }
+
+  $('#doc').val(JSON.stringify(value, null, '  '));
 
   fullDoc=data;
 
