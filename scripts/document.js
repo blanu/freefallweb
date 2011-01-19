@@ -7,9 +7,11 @@ function gotDoc(doc, data)
   log('got doc');
   log(data);
 
-  if(jsonlint.parse(data))
+  var value=JSON.stringify(data);
+
+  if(jsonlint.parse(value))
   {
-    data=JSON.parse(data);
+    value=JSON.parse(value);
   }
   else
   {
