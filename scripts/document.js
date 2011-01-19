@@ -16,9 +16,11 @@ function gotDoc(doc, data)
 
 //  renderEditor();
 
-//  bespin.useBespin('doc').then(function(env) {
-//		editor=env.editor;
-//	});
+  editor=new CodeMirror.fromTextArea('doc', {
+    parserfile: ['tokenizejavascript.js', 'parsejavascript.js'],
+    path: 'lib/codemirror',
+    stylesheet: 'styles/codemirror/jscolors.css'
+  });
 }
 
 function saveDoc()
@@ -58,12 +60,6 @@ function initDocument()
 
   db=freefall.Database('http://freefall.blanu.net/', dbid);
   doc=db.get(docid);
-
-  editor=new CodeMirror.fromTextArea('doc', {
-    parserfile: ['tokenizejavascript.js', 'parsejavascript.js'],
-    path: 'lib/codemirror',
-    stylesheet: 'styles/codemirror/jscolors.css'
-  });
 
   $('#saveDoc').click(saveDoc);
 
