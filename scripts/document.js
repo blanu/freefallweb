@@ -27,7 +27,10 @@ function gotDoc(doc, data)
   editor=new CodeMirror.fromTextArea('doc', {
     parserfile: ['tokenizejavascript.js', 'parsejavascript.js'],
     path: 'http://beta.freefalldb.com/lib/codemirror/',
-    stylesheet: 'http://beta.freefalldb.com/styles/codemirror/jscolors.css'
+    stylesheet: 'http://beta.freefalldb.com/styles/codemirror/jscolors.css',
+    saveFunction: saveDoc,
+    disableSpellcheck: true,
+    lineNumbers: true,
   });
 }
 
