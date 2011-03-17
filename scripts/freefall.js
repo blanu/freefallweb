@@ -236,6 +236,12 @@ freefall.Database=function(base, id, update)
     return freefall.Document(this, docname);
   }
 
+  this.getAll=function(allCallback)
+  {
+    var url=this.base+'/db/'+this.dbid+'/all';
+    ajax('GET', url, null, allCallback);
+  }
+
   this.getView=function(viewname, key)
   {
     return freefall.View(this, viewname, key);
