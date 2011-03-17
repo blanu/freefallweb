@@ -218,11 +218,17 @@ freefall.Database=function(base, id, update)
     ajax('GET', url, null, this.docsCallback);
   }
 
-  this.addDoc=function(docname)
+  this.addDoc=function(docname, contents)
   {
 //    log('dbname: '+docname);
+
+    if(contents===undefined)
+    {
+      contents=null;
+    }
+
     var url=this.base+"/db/"+this.dbid+'/'+docname;
-    ajax('POST', url, JSON.stringify(null), null);
+    ajax('POST', url, JSON.stringify(contents), null);
   }
 
   this.get=function(docname)
