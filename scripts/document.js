@@ -9,13 +9,19 @@ function gotDoc(doc, data)
 
   var value=JSON.stringify(data);
 
-  if(jsonlint.parse(value))
+  try
   {
-    value=JSON.parse(value);
+    if(jsonlint.parse(value))
+    {
+      value=JSON.parse(value);
+    }
+    else
+    {
+      log('Invalid json: '+value);
+    }
   }
-  else
+  catch
   {
-    log('Invalid json: '+value);
   }
 
   $('#doc').val(JSON.stringify(value, null, '  '));
