@@ -20,7 +20,7 @@ function gotDoc(doc, data)
       log('Invalid json: '+value);
     }
   }
-  catch
+  catch(e)
   {
   }
 
